@@ -4,7 +4,7 @@ import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selenide.$x;
 
-public class Cart {
+public class CartElement {
 
     private final SelenideElement goodTitle = $x("//a[@class='cart-product__title']");
     private final SelenideElement goodPrice = $x("//p[contains(@class,'cart-product__price')]");
