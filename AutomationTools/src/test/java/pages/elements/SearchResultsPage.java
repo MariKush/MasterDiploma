@@ -6,8 +6,10 @@ import com.codeborne.selenide.SelenideElement;
 
 import java.util.List;
 
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$$x;
 import static com.codeborne.selenide.Selenide.$x;
+import static java.util.stream.Collectors.toList;
 
 public class SearchResultsPage {
 
@@ -28,7 +30,7 @@ public class SearchResultsPage {
     //Filtering
     private final SelenideElement minPriceInput = $x("//input[@formcontrolname='min']");
     private final SelenideElement maxPriceInput = $x("//input[@formcontrolname='max']");
-    private final SelenideElement priceFilterOKButton = $x("//button[contains(@class, ' slider-filter')]");
+    private final SelenideElement priceFilterOkButton = $x("//button[contains(@class, ' slider-filter')]");
     private final String filterCheckBox = "//a[@class='tile-filter__link' and contains(text(),'%s')]";
 
 
@@ -37,7 +39,28 @@ public class SearchResultsPage {
     }
 
     public void catalogEmptyVisible(){
-        catalogEmpty.shouldBe(Condition.visible);
+        catalogEmpty.shouldBe(visible);
+    }
+
+    public SelenideElement getMinPriceInput(){
+        return minPriceInput.shouldBe(visible);
+    }
+
+    public SelenideElement getMaxPriceInput(){
+        return maxPriceInput.shouldBe(visible);
+    }
+
+    public SelenideElement getPriceFilterOkButton(){
+        return priceFilterOkButton.shouldBe(visible);
+    }
+
+    public List<Integer> getGoodsPrices() {
+        goodsPrices.get(0).shouldBe(visible);
+        return goodsPrices.asDynamicIterable().stream()
+                .map(SelenideElement :: getText)
+                .map(text -> text.replaceAll("\\s+", ""))
+                .map(Integer :: parseInt)
+                .collect(toList());
     }
 
 }
