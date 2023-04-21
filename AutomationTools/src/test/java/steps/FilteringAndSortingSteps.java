@@ -4,6 +4,8 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import pages.elements.SearchResultsPage;
 
+
+import static java.util.Comparator.reverseOrder;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class FilteringAndSortingSteps {
@@ -42,6 +44,20 @@ public class FilteringAndSortingSteps {
         searchResultsPage.getSelectSortOption().click();
         searchResultsPage.getSortingOption(sortingOption).click();
     }
+
+
+    @Then("^I verify that all goods are sorted in ascending order of price$")
+    public void checkCheapFirstSortOption() {
+        assertThat(searchResultsPage.getGoodsPrices()).isSorted();
+    }
+
+    @Then("^I verify that all goods are sorted in descending order of price$")
+    public void checkExpensiveFirstSortOption() {
+        assertThat(searchResultsPage.getGoodsPrices()).isSortedAccordingTo(reverseOrder());
+    }
+
+
+
 
 
 }
