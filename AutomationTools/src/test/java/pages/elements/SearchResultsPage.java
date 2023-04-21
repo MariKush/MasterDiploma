@@ -1,7 +1,10 @@
 package pages.elements;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+
+import java.util.List;
 
 import static com.codeborne.selenide.Selenide.$$x;
 import static com.codeborne.selenide.Selenide.$x;
@@ -27,5 +30,14 @@ public class SearchResultsPage {
     private final SelenideElement maxPriceInput = $x("//input[@formcontrolname='max']");
     private final SelenideElement priceFilterOKButton = $x("//button[contains(@class, ' slider-filter')]");
     private final String filterCheckBox = "//a[@class='tile-filter__link' and contains(text(),'%s')]";
+
+
+    public List<String> getGoodsTitles(){
+        return goodsTitles.texts();
+    }
+
+    public void catalogEmptyVisible(){
+        catalogEmpty.shouldBe(Condition.visible);
+    }
 
 }
