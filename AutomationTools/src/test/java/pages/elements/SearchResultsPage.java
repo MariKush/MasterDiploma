@@ -8,6 +8,7 @@ import java.util.List;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$$x;
 import static com.codeborne.selenide.Selenide.$x;
+import static java.lang.String.format;
 import static java.util.stream.Collectors.toList;
 
 public class SearchResultsPage {
@@ -23,8 +24,7 @@ public class SearchResultsPage {
 
     //Sorting
     private final SelenideElement selectSortOption = $x("//select[contains(@class, 'select-css')]");
-    private final SelenideElement cheapFirstOption = $x("//option[contains(@value, 'cheap')]");
-    private final SelenideElement expensiveFirstOption = $x("//option[contains(@value, 'expensive')]");
+    private final String sortingOption = "//option[contains(@value, '%s')]";
 
     //Filtering
     private final SelenideElement minPriceInput = $x("//input[@formcontrolname='min']");
@@ -33,33 +33,41 @@ public class SearchResultsPage {
     private final String filterCheckBox = "//a[@class='tile-filter__link' and contains(text(),'%s')]";
 
 
-    public List<String> getGoodsTitles(){
+    public List<String> getGoodsTitles() {
         return goodsTitles.texts();
     }
 
-    public void catalogEmptyVisible(){
+    public void catalogEmptyVisible() {
         catalogEmpty.shouldBe(visible);
     }
 
-    public SelenideElement getMinPriceInput(){
+    public SelenideElement getMinPriceInput() {
         return minPriceInput.shouldBe(visible);
     }
 
-    public SelenideElement getMaxPriceInput(){
+    public SelenideElement getMaxPriceInput() {
         return maxPriceInput.shouldBe(visible);
     }
 
-    public SelenideElement getPriceFilterOkButton(){
+    public SelenideElement getPriceFilterOkButton() {
         return priceFilterOkButton.shouldBe(visible);
     }
 
     public List<Integer> getGoodsPrices() {
         goodsPrices.get(0).shouldBe(visible);
         return goodsPrices.asDynamicIterable().stream()
-                .map(SelenideElement :: getText)
+                .map(SelenideElement::getText)
                 .map(text -> text.replaceAll("\\s+", ""))
-                .map(Integer :: parseInt)
+                .map(Integer::parseInt)
                 .collect(toList());
+    }
+
+    public SelenideElement getSelectSortOption() {
+        return selectSortOption.shouldBe(visible);
+    }
+
+    public SelenideElement getSortingOption(String option) {
+        return $x(format(sortingOption, option));
     }
 
 }

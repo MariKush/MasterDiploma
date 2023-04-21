@@ -36,4 +36,12 @@ public class FilteringAndSortingSteps {
                 .forEach(price -> assertThat(price).isLessThanOrEqualTo(cost));
     }
 
+
+    @And("^I choose (cheap|expensive) first sort option$")
+    public void chooseSortOption(String sortingOption) {
+        searchResultsPage.getSelectSortOption().click();
+        searchResultsPage.getSortingOption(sortingOption).click();
+    }
+
+
 }
