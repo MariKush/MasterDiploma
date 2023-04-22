@@ -73,4 +73,8 @@ public class SearchResultsPage {
     public SelenideElement getFilterCheckBox(String text) {
         return $x(format(filterCheckBox, text)).shouldBe(visible);
     }
+
+    public SelenideElement getAddToCartButton(Integer index) {
+        return addToCartButtons.get(index).shouldBe(visible);
+    }
 }

@@ -2,6 +2,7 @@ package pages.elements;
 
 import com.codeborne.selenide.SelenideElement;
 
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class CartElement {
@@ -15,4 +16,37 @@ public class CartElement {
     private final SelenideElement goodActionButton = $x("//button[@id='cartProductActions0']");
     private final SelenideElement deleteGoodButton = $x("//button[contains(text(), ' Видалити')]");
     private final SelenideElement emptyChart = $x("//div[contains(@class, 'cart-dummy')]");
+
+    public String getGoodTitle() {
+        return goodTitle.shouldBe(visible).getText();
+    }
+
+    public String getGoodPrice() {
+        return goodPrice.shouldBe(visible).getText();
+    }
+
+    public String getSumPrice() {
+        return sumPrice.shouldBe(visible).getText();
+    }
+
+    public SelenideElement getAddOneMoreGood() {
+        return addOneMoreGood.shouldBe(visible);
+    }
+
+    public SelenideElement getSubtractOneGood() {
+        return subtractOneGood.shouldBe(visible);
+    }
+
+    public SelenideElement getGoodActionButton() {
+        return goodActionButton.shouldBe(visible);
+    }
+
+    public SelenideElement getDeleteGoodButton() {
+        return deleteGoodButton.shouldBe(visible);
+    }
+
+    public void emptyChartVisible() {
+         emptyChart.shouldBe(visible);
+    }
+
 }
