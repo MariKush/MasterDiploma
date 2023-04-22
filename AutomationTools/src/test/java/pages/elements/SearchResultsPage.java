@@ -67,7 +67,10 @@ public class SearchResultsPage {
     }
 
     public SelenideElement getSortingOption(String option) {
-        return $x(format(sortingOption, option));
+        return $x(format(sortingOption, option)).shouldBe(visible);
     }
 
+    public SelenideElement getFilterCheckBox(String text) {
+        return $x(format(filterCheckBox, text)).shouldBe(visible);
+    }
 }

@@ -56,8 +56,10 @@ public class FilteringAndSortingSteps {
         assertThat(searchResultsPage.getGoodsPrices()).isSortedAccordingTo(reverseOrder());
     }
 
-
-
-
+    @And("^I choose (512)GB option in memory filter$")
+    public void chooseMemoryFilter(String memory) {
+        searchResultsPage.getFilterCheckBox(memory).scrollIntoView("{block: \"center\"}");
+        searchResultsPage.getFilterCheckBox(memory).click();
+    }
 
 }
