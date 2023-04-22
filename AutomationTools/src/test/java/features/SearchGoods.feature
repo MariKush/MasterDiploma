@@ -5,7 +5,7 @@ Feature: Verify search goods functionality
 
   Scenario: Verify that URL contains search word
     When I set IPhone value in Search field and press Enter
-    Then I verify that URL contain IPhone word
+    Then I verify that URL contains IPhone
 
   Scenario: Verify that search results contains search word
     When I set iPhone value in Search field and press Enter
