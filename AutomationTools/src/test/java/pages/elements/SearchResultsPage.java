@@ -34,6 +34,7 @@ public class SearchResultsPage {
 
 
     public List<String> getGoodsTitles() {
+        goodsTitles.first().shouldBe(visible);
         return goodsTitles.texts();
     }
 
@@ -54,10 +55,10 @@ public class SearchResultsPage {
     }
 
     public List<Integer> getGoodsPrices() {
-        goodsPrices.get(0).shouldBe(visible);
+        goodsPrices.first().shouldBe(visible);
         return goodsPrices.asDynamicIterable().stream()
                 .map(SelenideElement::getText)
-                .map(text -> text.replaceAll("\\s+", ""))
+                .map(text -> text.replaceAll("\\s+", "").replaceAll("₴", ""))
                 .map(Integer::parseInt)
                 .collect(toList());
     }
