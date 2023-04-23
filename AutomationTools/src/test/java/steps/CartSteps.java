@@ -6,8 +6,6 @@ import pages.elements.CartElement;
 import pages.elements.HeaderElement;
 import pages.elements.SearchResultsPage;
 
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -57,11 +55,13 @@ public class CartSteps {
 
     @Then("^I verify sum goods price in the cart with (.*) the same goods$")
     public void assertSumGoodsPriceForSomeCountOfTheSameGoodsInTheCart(int count) {
-        DecimalFormatSymbols symbols = DecimalFormatSymbols.getInstance();
-        symbols.setGroupingSeparator(' ');
-        DecimalFormat formatter = new DecimalFormat("###,###.##", symbols);
-        String expectedPriceInFormat = formatter.format(firstGoodsPriceInCatalog * count) + " ₴";
-        assertThat(cartElement.getGoodPrice()).isEqualTo(expectedPriceInFormat);
+        String expectedPrice = firstGoodsPriceInCatalog * count  + "₴";
+        int expectedPriceLength = expectedPrice.length();
+        if (expectedPriceLength > 4) {
+            expectedPrice = expectedPrice.substring(0, expectedPriceLength - 4) + " " +
+                    expectedPrice.substring(expectedPriceLength - 4, expectedPriceLength);
+        }
+        assertThat(cartElement.getGoodPrice()).isEqualTo(expectedPrice);
     }
 
     @And("^I decrement goods count in the cart$")
