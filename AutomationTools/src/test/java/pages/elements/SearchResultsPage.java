@@ -1,6 +1,7 @@
 package pages.elements;
 
 import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 
 import java.util.List;
@@ -55,6 +56,7 @@ public class SearchResultsPage {
     }
 
     public List<Integer> getGoodsPrices() {
+        Selenide.sleep(500);
         goodsPrices.first().shouldBe(visible);
         return goodsPrices.asDynamicIterable().stream()
                 .map(SelenideElement::getText)
