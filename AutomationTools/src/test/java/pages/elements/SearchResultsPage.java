@@ -35,6 +35,7 @@ public class SearchResultsPage {
 
 
     public List<String> getGoodsTitles() {
+        Selenide.sleep(500);
         goodsTitles.first().shouldBe(visible);
         return goodsTitles.texts();
     }
