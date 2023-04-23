@@ -18,7 +18,7 @@ public class SharedSteps {
 
     @Then("^I verify that URL contains (.*)$")
     public void assertThenUrlContainSearchWord(String searchWord) {
-        assertThat(WebDriverRunner.url()).containsIgnoringCase(searchWord.toLowerCase());
+        assertThat(WebDriverRunner.url()).containsIgnoringCase(searchWord);
     }
 
 }
