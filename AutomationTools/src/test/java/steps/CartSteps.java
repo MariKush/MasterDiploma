@@ -41,7 +41,7 @@ public class CartSteps {
 
     @And("^I open cart using header$")
     public void openCartUsingHeader() {
-        headerElement.getCartButton().click();
+        Utils.jsClick(headerElement.getCartButton());
     }
 
     @Then("^I verify that goods title in the cart equals to title in the catalog$")
