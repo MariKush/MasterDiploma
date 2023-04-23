@@ -20,6 +20,6 @@ Feature: Verify filtering and sorting functionality in catalog
     When I choose expensive first sort option
     Then I verify that all goods are sorted in descending order of price
 
-  Scenario: Verify 64GB memory filtering
-    When I choose 64GB option in memory filter
-    Then I verify that all goods descriptions contains 65GB
+  Scenario: Verify 512 GB memory filtering
+    When I choose 512GB option in memory filter
+    Then I verify that search result contains 512GB word
