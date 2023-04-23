@@ -1,5 +1,6 @@
 package pages.elements;
 
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Condition.visible;
@@ -22,6 +23,7 @@ public class CartElement {
     }
 
     public String getGoodPrice() {
+        Selenide.sleep(500);
         return goodPrice.shouldBe(visible).getText();
     }
 
