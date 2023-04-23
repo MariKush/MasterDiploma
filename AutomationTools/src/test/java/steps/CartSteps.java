@@ -5,6 +5,7 @@ import io.cucumber.java.en.Then;
 import pages.elements.CartElement;
 import pages.elements.HeaderElement;
 import pages.elements.SearchResultsPage;
+import utils.Utils;
 
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -55,13 +56,8 @@ public class CartSteps {
 
     @Then("^I verify sum goods price in the cart with (.*) the same goods$")
     public void assertSumGoodsPriceForSomeCountOfTheSameGoodsInTheCart(int count) {
-        String expectedPrice = firstGoodsPriceInCatalog * count  + "₴";
-        int expectedPriceLength = expectedPrice.length();
-        if (expectedPriceLength > 4) {
-            expectedPrice = expectedPrice.substring(0, expectedPriceLength - 4) + " " +
-                    expectedPrice.substring(expectedPriceLength - 4, expectedPriceLength);
-        }
-        assertThat(cartElement.getGoodPrice()).isEqualTo(expectedPrice);
+        assertThat(cartElement.getGoodPrice())
+                .isEqualTo(Utils.formatPrice(Integer.toString(firstGoodsPriceInCatalog * count)));
     }
 
     @And("^I decrement goods count in the cart$")
@@ -76,7 +72,8 @@ public class CartSteps {
 
     @Then("^I verify sum goods price in the cart with two different goods$")
     public void assertSumGoodsPriceForTwoDifferentInTheCart() {
-        assertThat(cartElement.getSumPrice()).isEqualTo(firstGoodsPriceInCatalog + secondGoodsPriceInCatalog + "");
+        assertThat(cartElement.getSumPrice())
+                .isEqualTo(Utils.formatPrice(Integer.toString(firstGoodsPriceInCatalog + secondGoodsPriceInCatalog)));
     }
 
     @And("^I open goods actions tab and choose delete button$")
