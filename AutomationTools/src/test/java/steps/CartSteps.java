@@ -21,7 +21,7 @@ public class CartSteps {
 
     @And("^I click add to cart button for the (\\d) good$")
     public void lickAddToCartButtonForGoodByIndex(Integer index) {
-        searchResultsPage.getAddToCartButton(index - 1).click();
+        Utils.jsClick(searchResultsPage.getAddToCartButton(index - 1));
     }
 
     @Then("^I verify that cart header counter equals (.*)$")
