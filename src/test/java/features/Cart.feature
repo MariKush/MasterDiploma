@@ -4,10 +4,12 @@ Feature: Verify cart functionality
     Given I open ROZETKA home page
     And I set iPhone value in Search field and press Enter
 
+  @Automated
   Scenario: Verify cart header counter for one good in the cart
     When I click add to cart button for the 1 good
     Then I verify that cart header counter equals 1
 
+  @Automated
   Scenario: Verify cart title and price in the cart
     And I store first goods title in catalog
     And I store first goods price in catalog
@@ -16,6 +18,7 @@ Feature: Verify cart functionality
     Then I verify that goods title in the cart equals to title in the catalog
     Then  I verify sum goods price in the cart with 1 the same goods
 
+  @Automated
   Scenario: Verify sum in cart after changing goods count
     And I store first goods price in catalog
     When I click add to cart button for the 1 good
@@ -26,6 +29,7 @@ Feature: Verify cart functionality
     When I decrement goods count in the cart
     Then I verify sum goods price in the cart with 1 the same goods
 
+  @Automated
   Scenario: Verify sum price of different goods in cart
     And I store first goods price in catalog
     And I store second goods price in catalog
@@ -34,6 +38,7 @@ Feature: Verify cart functionality
     And I open cart using header
     Then I verify sum goods price in the cart with two different goods
 
+  @Automated
   Scenario: Verify delete all goods from cart
     When I click add to cart button for the 1 good
     And I open cart using header
