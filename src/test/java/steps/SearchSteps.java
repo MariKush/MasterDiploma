@@ -23,8 +23,8 @@ public class SearchSteps {
                 .forEach(goodTitle -> assertThat(goodTitle).containsIgnoringCase(searchWord));
     }
 
-    @Then("^I see catalog empty message$")
-    public void assetThatSearchResultsContainsSearchWord() {
+    @Then("^I see catalog empty icon$")
+    public void assetThatCatalogIsEmpty() {
         searchResultsPage.catalogEmptyVisible();
     }
 

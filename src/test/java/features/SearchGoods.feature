@@ -16,4 +16,4 @@ Feature: Verify search goods functionality
   @Automated
   Scenario: Verify catalog empty message is displayed
     When I set wrongSearchWord value in Search field and press Enter
-    Then I see catalog empty message
+    Then I see catalog empty icon
