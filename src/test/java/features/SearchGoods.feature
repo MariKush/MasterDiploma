@@ -22,8 +22,3 @@ Feature: Verify search goods functionality
   Scenario: This test should fail
     When I set wrongSearchWord value in Search field and press Enter
     Then I verify that search result contains iPhone word
-
-  @Automated @DISABLED
-  Scenario: This test should have undefined step
-    When I set wrongSearchWord value in Search field and press Enter
-    Then This step is undefined
