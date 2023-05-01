@@ -10,7 +10,8 @@ import org.junit.runner.RunWith;
         features = {"src/test/java/features"},
         glue = {"steps"},
         plugin = {
-                "pretty"
+                "pretty",
+                "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"
         }
 )
 public class CucumberRunnerTest {
