@@ -8,7 +8,7 @@ Feature: Verify search goods functionality
     When I set IPhone value in Search field and press Enter
     Then I verify that URL contains IPhone
 
-  @Automated @DISABLED
+  @Automated
   Scenario: Verify that search results contains search word
     When I set iPhone value in Search field and press Enter
     Then I verify that search result contains iPhone word
@@ -17,3 +17,8 @@ Feature: Verify search goods functionality
   Scenario: Verify catalog empty message is displayed
     When I set wrongSearchWord value in Search field and press Enter
     Then I see catalog empty icon
+
+  @Automated @DISABLED
+  Scenario: This test should fail
+    When I set wrongSearchWord value in Search field and press Enter
+    Then I verify that search result contains iPhone word
